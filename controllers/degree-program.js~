@@ -22,7 +22,7 @@ exports.findOne = function (req, res, next) {
 
 // Insert a degree program.
 exports.insert = function (req, res, next) {
-	db.query("INSERT INTO degree(degree_code, description) VALUES (?,?)", [req.body.code, req.body.name], function (err, rows) {
+	db.query("INSERT INTO degree(degree_id, degree_code, description, total_units) VALUES (?,?,?,?)", [req.body.id, req.body.code, req.body.name, req.body.units], function (err, rows) {
 		if(err) return(err);
 		res.send(rows);
 	});
