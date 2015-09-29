@@ -38,7 +38,7 @@ describe('Degree Program', function () {
 				});
 		});
 
-		it('should return error trying to retrieve a degree program record that does not exist', function (done) {
+		it('should return error trying to retrieve a degree program record that does not exist', function () {
 			server
 				.get('/degree-programs/0')
 				.end(function(err, res) {

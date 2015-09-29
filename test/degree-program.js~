@@ -10,7 +10,7 @@ describe('Degree Program', function () {
 
 	// Test the find() degrees web service
 	describe('find()', function () {
-		it('should retrieve all degree program records', function (done) {
+		it('should retrieve all degree program records', function () {
 			server
 				.get('/degree-programs')
 				.end(function(err, res) {
@@ -24,7 +24,7 @@ describe('Degree Program', function () {
 	});
 
 	// Test the findOne() degree web service
-	describe('findOne()', function () {
+	describe('findOne()', function (done) {
 		it('should retrieve a degree program record', function (done) {
 			server
 				.get('/degree-programs/'+insertedId)
@@ -78,7 +78,7 @@ describe('Degree Program', function () {
 	});*/
 	
 	// Test update web service
-	describe('update()', function (done) {
+	describe('update()', function () {
 		it('should update a specific degree program record: degree_code, description, total_units field only', function () {
 			var update = {
 				'degree_code': 'BSCS',
@@ -103,7 +103,7 @@ describe('Degree Program', function () {
 		});
 	});
 
-	describe('remove()', function (done) {
+	describe('remove()', function () {
 		it('should remove a specific degree program record', function () {
 			var deleteId = {
 				'id': 4
