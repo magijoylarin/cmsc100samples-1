@@ -22,7 +22,7 @@ exports.findOne = function (req, res, next) {
 
 // Insert a degree program.
 exports.insert = function (req, res, next) {
-	db.query("INSERT INTO degree(degree_code, description, total_units, degree_id) VALUES (?,?,?,?)", [req.body.code, req.body.name, req.body.units, req.params.id], function (err, rows) {
+	db.query("INSERT INTO degree(degree_code, description) VALUES (?,?)", [req.body.code, req.body.name], function (err, rows) {
 		if(err) return(err);
 		res.send(rows);
 	});
@@ -40,7 +40,7 @@ exports.remove = function (req, res, next) {
 
 // Update a degree program.
 exports.update = function (req, res, next) {
-	db.query("UPDATE degree SET degree_code='"+req.body.units+"' description='"+req.body.units+"' total_units='"+req.body.units+"' WHERE degree_id='"+req.params.id+"'", function (err, rows) {
+	db.query("UPDATE degree SET degree_code='"+req.body.code+"' description='"+req.body.name+"' total_units='"+req.body.units+"' WHERE degree_id='"+req.params.id+"'", function (err, rows) {
 		if(err) return(err);
 		if(rows.length === 0)
 			res.send(404, {message: 'Degree program not found.'});
